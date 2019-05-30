@@ -9,7 +9,9 @@ from .forms import NameForm
 @main.route('/', methods=['GET', 'POST'])
 def index():
     form = NameForm()
+    print("out")
     if form.validate_on_submit():
+        print("in")
         user = User.query.filter_by(username=form.name.data).first()
         if user is None:
             flash('Welcome!')
